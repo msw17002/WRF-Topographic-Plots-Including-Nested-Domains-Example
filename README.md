@@ -8,6 +8,7 @@ Example Python code that,
 
 Required input: 
 wrfout*.nc (or met_em*.nc) file(s)
+
 Output:
 pdf/png of WRF's domain
 
