@@ -1,0 +1,21 @@
+Need ETOPO1 GRID data (bedrock) to plot topography... It also must be clipped so it won't crash your CPU.
+I already downloaded and placed the file here [].
+If a larger area is required;
+	1) go here to obtain the data for the desired domain: https://maps.ngdc.noaa.gov/viewers/grid-extract/index.html
+	2) you get the data as a .tif file, needs to be converted into a netcdf4 file. Do the following in your linux 
+   	   server to convert the file: 
+
+	   module purge                                                 #remove all loaded modules
+   	   module load gdal/3.1.2					#load gdal/3.1.2
+
+   	   gdal_translate -of netCDF -co "FOMRAT=NC4" exportImage.tif exportImage.nc      #convert .tif to .nc
+
+To run Domain_Plotter.ipynb;
+	1) copy and move Domain_Plotter.ipynb onto your PC
+	2) copy and move exportImage.nc onto your PC
+	3) you'll also need to copy and move the following shapefiles onto your PC,
+		shp_path  = '/shared/stormcenter/AirMG/ISD_Evaluation/Static_Files/Shapefiles_Cartopy'
+		fname_usa = shp_path+'/United_States_States_5m/cb_2016_us_state_5m.shp'
+		fname_chm = shp_path+'/Lake_Champlain/c0100e10-b780-4d5f-b0df-43d1a79a49ad2020410-1-seteko.xnxnj.shp'
+		fname_can = shp_path+'/Canada_trsmd/canada_tr.shp'
+***YOULL NEED TO EDIT THE SCRIPT IF YOUR DOMAIN HAS MORE OR LESS THAN 3 TOTAL DOMAINS... This is easy to do. Just copy and paste (or comment out) the required domains.
